@@ -34,7 +34,7 @@ class Objectify:
         if objectify: self.toObject(d)
     
 
-    def get(self, key:str, defaults=None):
+    def get(self, key, defaults=None):
         if type(key) == type(2):
                 key = "_" + str(key)
         key=str(key).replace(" ", "_").replace("-", "_")
