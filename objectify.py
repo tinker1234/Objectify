@@ -30,11 +30,11 @@ from typing import Any
 
 
 class Objectify:
-    def __init__(self, d: dict = {}, objectify:bool=True):
+    def __init__(self, d: dict = {}, objectify:bool=True) -> None:
         if objectify: self.toObject(d)
     
 
-    def get(self, key, defaults=None):
+    def get(self, key, defaults=None) -> Any:
         if type(key) == type(2):
                 key = "_" + str(key)
         key=str(key).replace(" ", "_").replace("-", "_")
@@ -43,7 +43,7 @@ class Objectify:
         else:
             return defaults
     
-    def set(self, key:Any, value:Any):
+    def set(self, key:Any, value:Any) -> None:
         key=str(key).replace(" ", "_").replace("-", "_")
         if type(key) == type(2):
                 key = "_" + str(key)
@@ -52,7 +52,7 @@ class Objectify:
         else:   
             setattr(self, key, value)
     
-    def toObject(self, d: dict):
+    def toObject(self, d: dict) -> None:
         for key, value in iter(d.items()):
             if type(key) == type(2):
                 key = "_" + str(key)
@@ -62,7 +62,7 @@ class Objectify:
             else:
                 setattr(self, key, value)
     
-    def toDict(self):
+    def toDict(self) -> dict:
         dict = {}
         for key, value in iter(self.__dict__.items()):
             if type(value) == type(self):
